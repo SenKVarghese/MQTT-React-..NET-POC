@@ -1,0 +1,52 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - main  # You can change this to your branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '8.0.0'  # Use your target .NET version
+
+      - name: Install dependencies
+        run: |
+          dotnet restore
+          cd ReactApp
+          npm install
+
+      - name: Build .NET Backend
+        run: |
+          dotnet build YourBackendProjectName/YourBackendProjectName.csproj --configuration Release
+
+      - name: Build React Frontend
+        run: |
+          cd ReactApp
+          npm run build
+
+      - name: Deploy to AWS EC2
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.AWS_EC2_HOST }}
+          username: ec2-user  # Change this to your EC2 user
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /path/to/your/backend
+            git pull origin main
+            dotnet publish --configuration Release --output /var/www/yourbackend
+            sudo systemctl restart your-backend-service  # Assuming you have a systemd service for your app
+            # Similar steps for React frontend if needed
+
+      - name: Deploy to AWS S3 for Frontend
+        run: |
+          aws s3 sync ./ReactApp/build s3://your-s3-bucket-name
