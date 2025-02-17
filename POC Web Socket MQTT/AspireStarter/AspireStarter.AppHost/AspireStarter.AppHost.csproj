@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>e214152d-c150-48e8-a227-1450de72ac2a</UserSecretsId>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.1" />
+		<PackageReference Include="Aspire.Hosting.NodeJs" Version="8.2.1" />
+		<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="8.2.1" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\POC-WebSocket-Backend\POC-WebSocket-Backend.csproj" />
+  </ItemGroup>
+
+</Project>

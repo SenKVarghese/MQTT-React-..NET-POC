@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/POC v2
+/.vs
+/POC Web Socket MQTT/AspireStarter/AspireStarter.ApiService/obj
+/POC Web Socket MQTT/AspireStarter/AspireStarter.AppHost/bin/Debug/net8.0
+/POC Web Socket MQTT/AspireStarter/AspireStarter.AppHost/obj
+/POC Web Socket MQTT/AspireStarter/AspireStarter.ServiceDefaults/obj
+/POC Web Socket MQTT/AspireStarter/AspireStarter.ServiceDefaults/AspireStarter.ServiceDefaults.csproj
+/POC Web Socket MQTT/AspireStarter/AspireStarter.Tests
+/POC Web Socket MQTT/AspireStarter/AspireStarter.Web
